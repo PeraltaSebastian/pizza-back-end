@@ -7,10 +7,10 @@ html{
  font-size:16px;
 }
 
-body{
- background-color: #fff;
- font-size:16px;
+body {
+    font-family: "Lato", sans-serif;
 }
+
 
 #header-container{
  display: flex;
