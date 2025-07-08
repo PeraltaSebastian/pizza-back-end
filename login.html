@@ -36,14 +36,33 @@ const btn=document.getElementById("login");
      
    }
    
-btn.addEventListener("click",(e)=>{
-e.preventDefault();
-const passValue=document.getElementById("password").value;
- if (passValue.length<6){
-        e.preventDefault();
-           displayError("La contraseña debe tener como minimo 6 caracteres.");
-}});
 
+ btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const passValue = document.getElementById("password").value;
+            const userValue = document.getElementById("username").value;
+            // Data es un objeto
+            const data={
+               username: userValue,
+               password: passValue
+            }
+        
+        
+            if (passValue.length < 6) {
+                e.preventDefault();
+                displayError("La contraseña debe tener como minimo 6 caracteres de longitud.");
+            }
+            if (userValue == "" || passValue == "") {
+                e.preventDefault();
+                displayError("Todos los campos son requeridos");
+            }
+             console.log(data);
+           //object{username: 'Carlos', password: '123456'}
+           // JSON {"username": "Carlos", "password": "123456"}
+           console.log(JSON.stringify(data));
+           //{"username":"jose","password":"123456"}
+
+        });
 </script>
 </html>
 
