@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="d-flex align-items-center justify-content-center vh-100">
-  <form class="form-signin" accept-charset="utf-8" method="POST" action="">
+  <form class="form-signin" accept-charset="utf-8" method="POST" action="login.php">
      <h2 class="form-signin-heading">USUARIO</h2>
      <input type="text" class="form-control" id="username" name="username" placeholder="Usuario o email" required autofocus />
      <br />
@@ -38,7 +38,7 @@ const btn=document.getElementById("login");
    
 
  btn.addEventListener('click', (e) => {
-            e.preventDefault();
+           // e.preventDefault();
             const passValue = document.getElementById("password").value;
             const userValue = document.getElementById("username").value;
             // Data es un objeto

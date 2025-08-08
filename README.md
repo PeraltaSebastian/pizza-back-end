@@ -22,9 +22,9 @@ Aplicación web que presenta un catalogo de pizzas con funcionalidad de carrito 
 
 ## Screenshots
 
-![Pizzeria imagen 1](https://github.com/PeraltaSebastian/pizza/edit/seba/screen-01.PNG)
+![Pizzeria imagen 1](https://github.com/PeraltaSebastian/pizza/blob/main/screen-01.PNG)
 
-![Pizzeria imagen 2](https://github.com/PeraltaSebastian/pizza/edit/seba/screen-02.PNG)
+![Pizzeria imagen 2](https://github.com/PeraltaSebastian/pizza/blob/main/screen-02.PNG)
 
 
 ## Autor
