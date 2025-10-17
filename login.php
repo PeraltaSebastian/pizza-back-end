@@ -1,38 +1,36 @@
-  <!DOCTYPE html>
-  <html lang="en">
+ <!doctype html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   </head>
 <body>
            <?php
     session_start();
 include_once ("config_login.php"); // ver usar require()
+include_once("db.class.php");
+
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-try {
-    $pdo = new PDO("mysql:host=" . SERVER_NAME . ";dbname=" . DATABASE_NAME, USER_NAME, PASSWORD);
-    // set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //echo "Connected successfully";
-    } catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    }
+$link=new Db();
 $usr = $_POST['username'];
 $pass = $_POST['password'];
 $hashed_pass = hash('sha256', $pass);
 $sql="select * from users where (username=? or email=?) and password=? and active='SI'";
 // Use de sentencias prepared
 // uso de POO- Programacion orientada a objetos
-$stmt=$pdo->prepare($sql);
-$stmt->execute([$usr,$usr,$hashed_pass]);
+$stmt=$link->run($sql,[$usr, $usr, $hashed_pass]);
 $row=$stmt->fetch(PDO::FETCH_ASSOC);
 if(!$row){
- echo "Los datos ingresados no son validos !";
+?>
+  <div class="alert alert-danger">
+          <a href="login.html" class="close" data-dismiss="alert">×</a>
+          <div class="text-center">
+            <h5><strong>¡Error!</strong> Login Invalido.</h5>
+          </div>
+        </div>
+        <?php
 }
  else
 {
@@ -46,6 +44,8 @@ if(!$row){
 }
  }
     ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
 </body>
 </html>
   
